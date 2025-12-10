@@ -47,21 +47,12 @@ Runs heavy human detection only every N frames
 Uses detection caching to keep performance smooth
 
 📁 Project Structure
-Fire Detection/
-│
-├── .venv/                # Python virtual environment
-│   ├── bin/
-│   ├── lib/
-│   └── pyvenv.cfg
-│
-├── alarm.mp3             # Alarm sound played on detection
-├── main.py               # Core Fire + Human detection script
-├── README.md             # Project documentation (this file)
-└── .gitignore            # Git ignore rules
+/Users/omraj/Desktop/Screenshot 2025-12-10 at 2.04.47 PM.png
 
 
 ## Architecture Diagram
 
+/Users/omraj/Desktop/Screenshot 2025-12-10 at 1.56.10 PM.png
 
 
 
