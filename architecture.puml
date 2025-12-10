@@ -1,0 +1,41 @@
+@startuml FireDetectionArchitecture
+title Fire + Human Detection System - Architecture
+
+actor User
+
+rectangle "Fire Detection App (main.py)" as App {
+    component "Main Loop" as Main
+    component "FireDetector\n(detect_fire)" as Fire
+    component "HumanDetector\n(detect_humans)" as Human
+    component "AlarmManager\n(trigger_alarm / play_alarm_sound)" as Alarm
+}
+
+rectangle "System Resources" as Sys {
+    component "Webcam\n(cv2.VideoCapture)" as Cam
+    component "OpenCV\n(cv2)" as OpenCV
+    component "NumPy\n(np)" as Numpy
+    component "OS & subprocess\n(os, subprocess)" as OSSub
+    artifact "alarm.mp3" as AlarmFile
+}
+
+User --> Main : starts program\nand views output
+Main --> Cam : read() frames
+Cam --> Main : BGR frames
+
+Main --> Human : resized frame + gray
+Human --> OpenCV : HOG + Haar cascade\n(person & face detection)
+Human --> Main : human boxes\n(body + face info)
+
+Main --> Fire : resized frame + human boxes
+Fire --> OpenCV : HSV conversion +\ncolor masking + morphology
+Fire --> Numpy : pixel count, ratio
+Fire --> Main : fire_detected_raw,\nfire_ratio, mask
+
+Main --> Alarm : when\nfire + human + stable
+Alarm --> OSSub : afplay alarm.mp3
+OSSub --> AlarmFile : read audio data
+
+Main --> OpenCV : imshow(), waitKey()
+User --> Main : 'q' key to quit
+
+@enduml
