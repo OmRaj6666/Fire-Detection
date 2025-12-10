@@ -47,12 +47,12 @@ Runs heavy human detection only every N frames
 Uses detection caching to keep performance smooth
 
 📁 Project Structure
-/Users/omraj/Desktop/Screenshot 2025-12-10 at 2.04.47 PM.png
 
+![project Diagram](project.png)
 
 ## Architecture Diagram
 
-/Users/omraj/Desktop/Screenshot 2025-12-10 at 1.56.10 PM.png
+![Architecture Diagram](architecture.png)
 
 
 
